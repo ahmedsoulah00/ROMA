@@ -21,10 +21,9 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    # قمنا بإزالة سطر تحديد الإصدار ليدع الأداة تختار النسخة المستقرة تلقائياً للمشروع
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
-      with:
-        gradle-version: 8.0
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew

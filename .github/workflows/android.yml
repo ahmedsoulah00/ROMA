@@ -21,15 +21,15 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # قمنا بإزالة سطر تحديد الإصدار ليدع الأداة تختار النسخة المستقرة تلقائياً للمشروع
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
+    # إضافة clean لضمان حذف أي ملفات تالفة سابقة والبناء من الصفر
     - name: Build with Gradle
-      run: ./gradlew assembleDebug
+      run: ./gradlew clean assembleDebug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4

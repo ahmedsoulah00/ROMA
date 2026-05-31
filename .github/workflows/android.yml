@@ -21,23 +21,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # قمنا بإيقاف الـ cache هنا لمنع السيرفر من قراءة الملفات التالفة القديمة
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
-      with:
-        cache-disabled: true
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    # تنظيف شامل وبناء التطبيق
     - name: Build with Gradle
-      run: ./gradlew clean assembleDebug
-      env:
-        GRADLE_OPTS: "-Dorg.gradle.daemon=false"
-
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: DarkNet-ROMA-APK
-        path: app/build/outputs/apk/debug/app-debug.apk
+      run: ./gradlew assembleDebug
